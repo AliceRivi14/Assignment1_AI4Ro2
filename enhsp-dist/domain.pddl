@@ -7,7 +7,7 @@
                   (c-at-loading_bay ?c - crate)                               ;crate at loading_bay
                   (m-moving ?c - crate ?m - mover)                            ;mover is moving towards a crate
                   (l-loading ?c - crate ?l - loader)                          ;loader is loading a crate on the conveyor belt
-                  (l-loading_light ?c - crate ?ll - loader-light)             ;loader-light (the cheaper loader ) is loading a crate in the conveyor belt
+                  (l-loading_light ?c - crate ?ll - loader-light)             ;loader-light (the cheaper loader ) is loading a crate on the conveyor belt
                   (at-crates ?c - crate ?m  - mover)                          ;mover at crate position
                   (carry ?c - crate ?m - mover)                               ;crate on the mover
                   (on-ground ?c - crate)                                      ;crate on the ground
@@ -562,7 +562,7 @@
     (:action m-move_create_to_loading_bay-L_F
         :parameters (?c - crate ?m1 ?m2 - mover )
         :precondition (and
-                        (< (weight ?c) 50);;;;;
+                        (< (weight ?c) 50)
                         (different ?m1 ?m2)
                         (fragile ?c)
                         (at-crates ?c ?m1)
@@ -580,7 +580,7 @@
     (:process m-moving_crate_to_loading_bay-L_F
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
-                          (< (weight ?c) 50);;;;;
+                          (< (weight ?c) 50)
                           (different ?m1 ?m2)
                           (fragile ?c)
                           (m-moving ?c ?m1)
@@ -596,7 +596,7 @@
     (:event crate_at_loading_bay-L_F
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
-                          (< (weight ?c) 50);;;;;
+                          (< (weight ?c) 50)
                           (different ?m1 ?m2)
                           (fragile ?c)
                           (m-moving ?c ?m1)
