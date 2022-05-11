@@ -49,7 +49,7 @@
 
 ;MOVER GOES FROM LOADING BAY TO THE CRATE POSITION
 
-    (:action m_move_to_crate
+    (:action m-move_to_crate
         :parameters (?c - crate ?m - mover)
         :precondition (and
                         (= (amount_A) 0)
@@ -67,7 +67,7 @@
     )
 
 
-    (:process m_moving_to_crate
+    (:process m-moving_to_crate
         :parameters (?c - crate ?m - mover)
         :precondition (and
                           (= (amount_A) 0)
@@ -79,7 +79,7 @@
     )
 
 
-    (:event m_at_crates
+    (:event m-at_crates
         :parameters (?c - crate ?m - mover)
         :precondition (and
                           (= (amount_A) 0)
@@ -94,7 +94,7 @@
 
 ;Label A
 
-   (:action m_move_to_crate_A
+   (:action m-move_to_crate_A
         :parameters (?c - crate ?m - mover)
         :precondition (and
                         (label_A ?c)
@@ -113,7 +113,7 @@
                     )
     )
 
-    (:process m_moving_to_crate_A
+    (:process m-moving_to_crate_A
         :parameters (?c - crate ?m - mover)
         :precondition (and
                           (label_A ?c)
@@ -125,7 +125,7 @@
                     (decrease (charge ?m) (* #t 1)))
     )
 
-    (:event m_at_crates_A
+    (:event m-at_crates_A
         :parameters (?c - crate ?m - mover)
         :precondition (and
                           (label_A ?c)
@@ -141,7 +141,7 @@
 
 ;Label B
 
-    (:action m_move_to_crate_B
+    (:action m-move_to_crate_B
         :parameters (?c - crate ?m - mover)
         :precondition (and
                         (label_B ?c)
@@ -159,7 +159,7 @@
                     (assign (dist_m-c ?c ?m) (dist ?c)))
     )
 
-    (:process m_moving_to_crate_B
+    (:process m-moving_to_crate_B
         :parameters (?c - crate ?m - mover)
         :precondition (and
                           (label_B ?c)
@@ -172,7 +172,7 @@
                     (decrease (charge ?m) (* #t 1)))
     )
 
-    (:event m_at_crates_B
+    (:event m-at_crates_B
         :parameters (?c - crate ?m - mover)
         :precondition (and
                           (label_B ?c)
