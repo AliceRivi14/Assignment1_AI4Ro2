@@ -94,7 +94,7 @@
 
 ;Label A
 
-   (:action m-move_to_crate_A
+   (:action m-move_to_crate-A
         :parameters (?c - crate ?m - mover)
         :precondition (and
                         (label_A ?c)
@@ -113,7 +113,7 @@
                     )
     )
 
-    (:process m-moving_to_crate_A
+    (:process m-moving_to_crate-A
         :parameters (?c - crate ?m - mover)
         :precondition (and
                           (label_A ?c)
@@ -125,7 +125,7 @@
                     (decrease (charge ?m) (* #t 1)))
     )
 
-    (:event m-at_crates_A
+    (:event m-at_crates-A
         :parameters (?c - crate ?m - mover)
         :precondition (and
                           (label_A ?c)
@@ -141,7 +141,7 @@
 
 ;Label B
 
-    (:action m-move_to_crate_B
+    (:action m-move_to_crate-B
         :parameters (?c - crate ?m - mover)
         :precondition (and
                         (label_B ?c)
@@ -159,7 +159,7 @@
                     (assign (dist_m-c ?c ?m) (dist ?c)))
     )
 
-    (:process m-moving_to_crate_B
+    (:process m-moving_to_crate-B
         :parameters (?c - crate ?m - mover)
         :precondition (and
                           (label_B ?c)
@@ -172,7 +172,7 @@
                     (decrease (charge ?m) (* #t 1)))
     )
 
-    (:event m-at_crates_B
+    (:event m-at_crates-B
         :parameters (?c - crate ?m - mover)
         :precondition (and
                           (label_B ?c)
@@ -250,7 +250,7 @@
 
 ;HEAVY standard crate
 
-    (:action m-load_H
+    (:action m-load-H
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
                           (= (amount_A) 0)
@@ -273,7 +273,7 @@
 
 ;Label A and HEAVY crate
 
-    (:action m-load_H_A
+    (:action m-load_H-A
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
                           (label_A ?c)
@@ -299,7 +299,7 @@
 
 ;Label B and HEAVY crate
 
-    (:action m-load_H_B
+    (:action m-load_H-B
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
                           (label_B ?c)
@@ -328,7 +328,7 @@
 
 ;FRAGILE standard crate
 
-    (:action m-load_F
+    (:action m-load-F
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
                           (= (amount_A) 0)
@@ -352,7 +352,7 @@
 
 ;Label A and FRAGILE crate
 
-    (:action m-load_F_A
+    (:action m-load-F_A
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
                           (label_A ?c)
@@ -379,7 +379,7 @@
 
 ;Label B and FRAGILE crate
 
-    (:action m-load_F_B
+    (:action m-load-F_B
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
                           (label_B ?c)
@@ -455,7 +455,7 @@
 
 ;HEAVY crate
 
-    (:action m-move_create_to_loading_bay_H
+    (:action m-move_create_to_loading_bay-H
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
                         (different ?m1 ?m2)
@@ -472,7 +472,7 @@
 
     )
 
-    (:process m-moving_crate_to_loading_bay_H
+    (:process m-moving_crate_to_loading_bay-H
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
                           (different ?m1 ?m2)
@@ -487,7 +487,7 @@
                     (decrease (charge ?m2) (* #t 1)))
     )
 
-    (:event crate_at_loading_bay_H
+    (:event crate_at_loading_bay-H
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
                           (different ?m1 ?m2)
@@ -505,7 +505,7 @@
 
 ;HEAVY and FRAGILE crate
 
-    (:action m-move_create_to_loading_bay_H_F
+    (:action m-move_create_to_loading_bay-H_F
         :parameters (?c - crate ?m1 ?m2 - mover )
         :precondition (and
                         (>= (weight ?c) 50)
@@ -523,7 +523,7 @@
 
     )
 
-    (:process m-moving_crate_to_loading_bay_H_F
+    (:process m-moving_crate_to_loading_bay-H_F
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
                           (>= (weight ?c) 50)
@@ -539,7 +539,7 @@
                     (decrease (charge ?m2) (* #t 1)) )
     )
 
-    (:event crate_at_loading_bay_H_F
+    (:event crate_at_loading_bay-H_F
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
                           (>= (weight ?c) 50)
@@ -559,7 +559,7 @@
 
 ;LIGHT and FRAGILE crate
 
-    (:action m-move_create_to_loading_bay_L_F
+    (:action m-move_create_to_loading_bay-L_F
         :parameters (?c - crate ?m1 ?m2 - mover )
         :precondition (and
                         (< (weight ?c) 50);;;;;
@@ -577,7 +577,7 @@
 
     )
 
-    (:process m-moving_crate_to_loading_bay_L_F
+    (:process m-moving_crate_to_loading_bay-L_F
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
                           (< (weight ?c) 50);;;;;
@@ -593,7 +593,7 @@
                     (decrease (charge ?m2) (* #t 1)) )
     )
 
-    (:event crate_at_loading_bay_L_F
+    (:event crate_at_loading_bay-L_F
         :parameters (?c - crate ?m1 ?m2 - mover)
         :precondition (and
                           (< (weight ?c) 50);;;;;
@@ -618,7 +618,7 @@
 
 ;LIGHT and NOT FRAGILE crate
 
-    (:action m-download_L
+    (:action m-download
         :parameters (?c - crate ?m - mover)
         :precondition (and
                           (< (weight ?c) 50)
@@ -633,7 +633,7 @@
 
 ;HEAVY and NOT FRAGILE crate
 
-    (:action m-download_H
+    (:action m-download-H
         :parameters (?c - crate ?m1 - mover ?m2 - mover)
         :precondition (and
                           (not (fragile ?c))
@@ -654,7 +654,7 @@
 
 ;FRAGILE crate
 
-(:action m-download_F
+(:action m-download-F
         :parameters (?c - crate ?m1 - mover ?m2 - mover)
         :precondition (and
                           (different ?m1 ?m2)
@@ -677,7 +677,7 @@
 
 ;LOADING ON CONVEYOR BELT PROCEDURE: the loader or the cheap-loader takes the crate from ground and downloads it on the conveyor belt
 
-;case: NOT FRAGILE crate and STANDARD LOADER
+;NOT FRAGILE crate and STANDARD LOADER
 
      (:action l-load
         :parameters (?c - crate ?l - loader)
@@ -717,7 +717,7 @@
 
 ;NOT FRAGILE and LIGHT crate, CHEAP LOADER
 
-        (:action l-load_cheap_L
+        (:action l-load_cheap-L
         :parameters (?c - crate ?ll - loader-light)
         :precondition (and
                         (not (fragile ?c))
@@ -732,7 +732,7 @@
 
     )
 
-    (:process l-loading_cheap_L
+    (:process l-loading_cheap-L
         :parameters (?c - crate ?ll - loader-light)
         :precondition (and
                           (not (fragile ?c))
@@ -741,7 +741,7 @@
                     (decrease (loading_time_light ?ll) (* #t 1)))
     )
 
-    (:event crate_on_conveyor_belt_cheap_L
+    (:event crate_on_conveyor_belt_cheap-L
         :parameters (?c - crate ?ll - loader-light)
         :precondition (and
                           (not (fragile ?c))
@@ -757,7 +757,7 @@
 
 ;FRAGILE and LIGHT crate, CHEAP LOADER
 
-(:action l-load_cheap_L_F
+(:action l-load_cheap-L_F
         :parameters (?c - crate ?ll - loader-light)
         :precondition (and
                         (fragile ?c)
@@ -772,7 +772,7 @@
 
     )
 
-    (:process l-loading_cheap_L_F
+    (:process l-loading_cheap-L_F
         :parameters (?c - crate ?ll - loader-light)
         :precondition (and
                           (fragile ?c)
@@ -781,7 +781,7 @@
                     (decrease (loading_time_light_F ?ll) (* #t 1)))
     )
 
-    (:event crate_on_conveyor_belt_cheap_L_F
+    (:event crate_on_conveyor_belt_cheap-L_F
         :parameters (?c - crate ?ll - loader-light)
         :precondition (and
                           (fragile ?c)
@@ -797,7 +797,7 @@
 
 ;FRAGILE crate, STANDARD LOADER
 
-    (:action l-load_F
+    (:action l-load-F
         :parameters (?c - crate ?l - loader)
         :precondition (and
                         (fragile ?c)
@@ -811,7 +811,7 @@
 
     )
 
-    (:process l-loading_F
+    (:process l-loading-F
         :parameters (?c - crate ?l - loader)
         :precondition (and
                           (fragile ?c)
@@ -820,7 +820,7 @@
                     (decrease (loading_time_F ?l) (* #t 1)))
     )
 
-    (:event crate_on_conveyor_belt_fragile
+    (:event crate_on_conveyor_belt_fragile-F
         :parameters (?c - crate ?l - loader)
         :precondition (and
                           (fragile ?c)
@@ -838,7 +838,7 @@
 
 ;MOVER'S CHARGING ACTION: the mover charge himself up at loading bay
 
-    (:action charging
+    (:action m-charging
         :parameters (?m - mover)
         :precondition (and
                             (m-at-loading_bay ?m)
