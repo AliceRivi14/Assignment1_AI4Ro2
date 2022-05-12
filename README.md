@@ -8,10 +8,14 @@ In the warehouse, there are three robots: one loader and two movers. The loader 
 The mover robots are in charge of moving crates from their initial position in the warehouse to the loading bay, so that they can then be loaded on the conveyor belt by the loader.
 
 The goal of the assignment is to move the movers from the loading bay to the position of the crates, load the crates and transport them to the loading bay where they are loaded on the conveyor belt.
+
 The weight and initial position of each crate are of course known. The position of a crate is only given in terms of its distance from the loading bay. 
 Light crates, which weigh less than 50kg, can be moved around by a single mover robot, while heavy crates, which weigh more than 50kg, need 2 mover robots.
+
 The time needed to move a crate around depends on its weight and can be calculated as: `distance * weight / 100`; moreover, when moving around with no crates, mover robots cover 10 distance units per time unit.
+
 It takes the loader robot 4 time units to load a crate on the conveyor belt, and it can load a single crate at a time. The loading bay must be kept free while the loader is in the process of loading a crate on the belt.
+
 The code is organised in four problem and a general domain, which also considers the four optional extensions.
 
 ## Installing and running
