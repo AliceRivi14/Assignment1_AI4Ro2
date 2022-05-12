@@ -112,7 +112,7 @@ In the first part, predicates and functions are defined, then each movement is p
 
 The code shows 4 types of problems:
 
-•	Problem 1: 3 crates
+•	**Problem 1**: 3 crates
 
     Crate 1: weight 70kg, 10 distance from loading bay
 
@@ -120,7 +120,7 @@ The code shows 4 types of problems:
 
     Crate 3: weight 20kg, 20 distance from loading bay, in group A
 
-•	Problem 2: 4 crates
+•	**Problem 2**: 4 crates
 
     Crate 1: weight 70kg, 10 distance from loading bay, in group A
 
@@ -130,7 +130,7 @@ The code shows 4 types of problems:
 
     Crate 4: weight 30kg, 10 distance from loading bay, in group B
 
-•	Problem 3: 4 crates
+•	**Problem 3**: 4 crates
 
     Crate 1: weight 70kg, 20 distance from loading bay, in group A
 
@@ -140,7 +140,7 @@ The code shows 4 types of problems:
     
     Crate 4: weight 30kg, 10 distance from loading bay
 
-•	Problem 4: 6 crates
+•	**Problem 4**: 6 crates
 
     Crate 1: weight 30kg, 20 distance from loading bay, in group A
     
@@ -161,14 +161,14 @@ Extensions
 
 There are a few optional ways in which the model can be extended:
 
-•	Some crates go together: some crates, characterized by the same letter, need to be loaded subsequently on the conveyor belt to help the delivery guy.
+•	**Some crates go together**: some crates, characterized by the same letter, need to be loaded subsequently on the conveyor belt to help the delivery guy.
 
-•	There are 2 loaders: the second loader uses the same loading by as the other one, and can used while other one is loading, but it is not capable of loading heavy crates (with weight >50kg).
+•	**There are 2 loaders**: the second loader uses the same loading by as the other one, and can used while other one is loading, but it is not capable of loading heavy crates (with weight >50kg).
 
-•	More robots need recharging: mover robots have a limited battery capacity of 20 power units, so they need to be recharged in the recharging station, that is positioned at the loading bay.
+•	**More robots need recharging**: mover robots have a limited battery capacity of 20 power units, so they need to be recharged in the recharging station, that is positioned at the loading bay.
   A robot consumes a power unit for each time unit in which it is actively doing something (moving around or moving crates).
 
-•	This is fragile:  some crates are “fragile”, so they always need 2 movers to be taken to the loading bay, and the loader robot works at reduced speed to avoid any potential damage. This means that loading a fragile crate on the conveyor belt takes 6 time units instead of the usual 4
+•	**This is fragile**:  some crates are "fragile", so they always need 2 movers to be taken to the loading bay, and the loader robot works at reduced speed to avoid any potential damage. This means that loading a fragile crate on the conveyor belt takes 6 time units instead of the usual 4
 
 ## Planning engine
   
@@ -180,13 +180,13 @@ The opt-blind is a baseline blind heuristic that gives 1 to state where the goal
 
 In all 4 problems the 2 optimal configurations are both better than the standard one. We can see that both take less time to reach the goal, once the best plan is found.
   
-• Problem 1:
+• **Problem 1**:
 
 The opt-hmax configuration has a longer planning, heuristic and search time, but it expands a lower number of nodes and evaluates a lower number of states comparing to the opt-blind configuration.
     
 The plan-length, the duration and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 1198 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
   
-• Problem 2:
+• **Problem 2**:
 
 In this case the plan lengths are very slightly different (1 unit) because the opt-blind configuration plan starts from the charging of m1, despite both movers are charge at the beginning.
     
@@ -194,7 +194,7 @@ The opt-hmax configuration has a shorter planning and search time, but a longer 
     
 The plan-length and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 194 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
   
-• Problem 3:
+• **Problem 3**:
 
 Also in this problem the plan lengths are very slightly different (1 unit) because the opt-blind configuration plan starts from the charging of m1, despite both movers are charge at the beginning.
     
@@ -202,7 +202,7 @@ The opt-hmax configuration has a longer planning and search time and a longer he
     
 The plan-length and metric (search) are almost the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 1484 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
   
-• Problem 4:
+• **Problem 4**:
 
 The opt-hmax configuration has a longer planning, heuristic and search time (3 orders of magnitude), but it expands a lower number of nodes and evaluates a lower number of states (same order of magnitude) comparing to the opt-blind configuration.
     
