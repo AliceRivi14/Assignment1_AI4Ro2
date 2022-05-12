@@ -29,19 +29,19 @@ To download the planner, you need to go to the following link https://sites.goog
 Before compiling make sure to have the Java machine installed on your computer (in particular it works with Java 15).
 Choosing "binary", you'll just have to download the .zip file; instead choosing "source" you'll have to execute the following commands from the bash:
 
-```sudo apt-get install openjdk-15
+``` sudo apt-get install openjdk-15 ```
 
 To compile the software just go to the root folder and run `./compile`, and this will generate a big JAR file in the enhsp-dist folder.
 
 The planner can be executed from the root folder using the following command:
 
-```java -jar /enhsp-dist/enhsp.jar -o /<domain_file> -f /<problem_file>
+``` java -jar /enhsp-dist/enhsp.jar -o /<domain_file> -f /<problem_file> ```
 
 where domain_file and problem_file are the PDDL input files.
 
 Should you wish to use a configuration other than the standard planner configuration, simply add it in the command line of the terminal as follows:
 
-```java -jar /enhsp-dist/enhsp.jar -o /<domain_file> -f /<problem_file> -planner <configuration>
+``` java -jar /enhsp-dist/enhsp.jar -o /<domain_file> -f /<problem_file> -planner <configuration> ```
 
 ## PDDL+
 
