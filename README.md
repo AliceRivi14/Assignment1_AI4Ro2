@@ -3,6 +3,7 @@
 In a warehouse, there are two robots that move crates around. The crates are to be loaded on the conveyor belt by an additional robot. The idea is that when the warehouse receives new orders, the corresponding crates to be moved are communicated to the robots, that take them to a loading bay where a dedicated robot can put them on the conveyor belt. Usually, one robot is enough to move light crates in the warehouse. However, in the presence of heavy (>50kg) crates, two robots are required.
 
 ## Goal
+
 In the warehouse, there are three robots: one loader and two movers. The loader is in charge
 of loading crates on the conveyor belt. It cannot move, as it is basically only a robotic arm.
 The mover robots are in charge of moving crates from their initial position in the warehouse
@@ -48,7 +49,7 @@ In particular:
 •	Processes execute continuously under the direction of the world: the world decides whether a process is active or not. 
 •	Events are the world’s version of actions: the world performs them when conditions are met.
   
-# Explanation of the code - domain.pddl
+### Explanation of the code - domain.pddl ###
   
 In the first part, predicates and functions are defined, then each movement is presented.
   
@@ -108,7 +109,7 @@ o	Crate 4: fragile, weight 20kg, 20 distance from loading bay, in group B
 o	Crate 5: fragile, weight 30kg, 30 distance from loading bay, in group B
 o	Crate 6: weight 20kg, 10 distance from loading bay
 
-# Explanation of the code - problem.pddl
+### Explanation of the code - problem.pddl ###
 
 In these four codes, the objects are presented at the beginning, then the initial conditions of each problem are described and finally the goals are defined.
 Extensions
@@ -128,25 +129,30 @@ The opt-blind is a baseline blind heuristic that gives 1 to state where the goal
 In all 4 problems the 2 optimal configurations are both better than the standard one. We can see that both take less time to reach the goal, once the best plan is found.
   
 Problem 1:
+
 The opt-hmax configuration has a longer planning, heuristic and search time, but it expands a lower number of nodes and evaluates a lower number of states comparing to the opt-blind configuration.
 The plan-length, the duration and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 1198 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
   
 Problem 2:
+
 In this case the plan lengths are very slightly different (1 unit) because the opt-blind configuration plan starts from the charging of m1, despite both movers are charge at the beginning.
 Th opt-hmax configuration has a shorter planning and search time, but a longer heuristic time, and it expands a lower number of nodes and evaluates a lower number of states (1 order of magnitude) comparing to the opt-blind configuration.
 The plan-length and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 194 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
   
 Problem 3:
+
 Also in this problem the plan lengths are very slightly different (1 unit) because the opt-blind configuration plan starts from the charging of m1, despite both movers are charge at the beginning.
 Th opt-hmax configuration has a longer planning and search time and a longer heuristic time, but it expands a lower number of nodes (1 order of magnitude) and evaluates a lower number of states (only double) comparing to the opt-blind configuration.
 The plan-length and metric (search) are almost the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 1484 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
   
 Problem 4:
+
 The opt-hmax configuration has a longer planning, heuristic and search time (3 orders of magnitude), but it expands a lower number of nodes and evaluates a lower number of states (same order of magnitude) comparing to the opt-blind configuration.
 The plan-length and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 462944 in the opt-hmax, but the number of duplicates is far lower in the former.
 All these solutions can be further explored by analysing the documents in the output folder.
 
 ## Note
+  
 Each mover consumes one unit of battery power each time it performs a movement, i.e. when heading towards the crates and during the return to the loading bay by transporting the crate. The time taken by the movers in these movements depends on the distance the crate is from the loading bay. In particular, the movement back to the loading bay with the crate is a function of the weight of the crate.
 In Problem 3, the third crate is at a distance of 30 and weighs 60kg. Doing the calculations, 21 units of time and 21 units of power are consumed to transport the crate to the loading bay. Since no conditions have been placed on the minimum battery value of the mover, the planner does not have a problem if this falls under zero, so to perform the charging action it only cares that the mover is free, at the loading bay and discharges a certain amount.
 This cannot happen in reality, so the conditions under which the mover must recharge must be modified. One solution would be to add fluents that take into account that the mover's battery level cannot be less than a certain amount. That way, when the movers realise they do not have enough battery to complete a movement, they stop, discharge the crate if necessary, and head to the loading bay to recharge.
