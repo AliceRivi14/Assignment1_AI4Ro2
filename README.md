@@ -137,21 +137,21 @@ The code shows 4 types of problems:
     Crate 2: fragile, weight 80kg, 20 distance from loading bay, in group A
 
     Crate 3: weight 60kg, 30 distance from loading bay, in group A
-
+    
     Crate 4: weight 30kg, 10 distance from loading bay
 
 •	Problem 4: 6 crates
 
     Crate 1: weight 30kg, 20 distance from loading bay, in group A
-
+    
     Crate 2: fragile, weight 20kg, 20 distance from loading bay, in group A
-
+    
     Crate 3: fragile, weight 30kg, 10 distance from loading bay, in group B
-
+    
     Crate 4: fragile, weight 20kg, 20 distance from loading bay, in group B
-
+    
     Crate 5: fragile, weight 30kg, 30 distance from loading bay, in group B
-
+    
     Crate 6: weight 20kg, 10 distance from loading bay
 
 ### Explanation of the code - problem.pddl ###
