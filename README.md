@@ -113,6 +113,7 @@ this action represents the loading of the mover. Whenever free movers consume a 
 The code shows 4 types of problems:
 
 •	Problem 1: 3 crates
+
   Crate 1: weight 70kg, 10 distance from loading bay
 
   Crate 2: fragile, weight 20kg, 20 distance from loading bay, in group A
