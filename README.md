@@ -29,19 +29,19 @@ To download the planner, you need to go to the following link https://sites.goog
 Before compiling make sure to have the Java machine installed on your computer (in particular it works with Java 15).
 Choosing "binary", you'll just have to download the .zip file; instead choosing "source" you'll have to execute the following commands from the bash:
 
-`sudo apt-get install openjdk-15`
+```sudo apt-get install openjdk-15
 
 To compile the software just go to the root folder and run `./compile`, and this will generate a big JAR file in the enhsp-dist folder.
 
 The planner can be executed from the root folder using the following command:
 
-`java -jar /enhsp-dist/enhsp.jar -o /<domain_file> -f /<problem_file>`
+```java -jar /enhsp-dist/enhsp.jar -o /<domain_file> -f /<problem_file>
 
 where domain_file and problem_file are the PDDL input files.
 
 Should you wish to use a configuration other than the standard planner configuration, simply add it in the command line of the terminal as follows:
 
-`java -jar /enhsp-dist/enhsp.jar -o /<domain_file> -f /<problem_file> -planner <configuration>`
+```java -jar /enhsp-dist/enhsp.jar -o /<domain_file> -f /<problem_file> -planner <configuration>
 
 ## PDDL+
 
@@ -69,44 +69,44 @@ In particular:
   
 In the first part, predicates and functions are defined, then each movement is presented.
   
-•	action m-move_to_crate 
+*	`action m-move_to_crate 
 
-  process m-moving_to_crate
+* process m-moving_to_crate
 
-  event m-at_crates: 
+* event m-at_crates`: 
 
-through these fluents the first movement of the movers is described. From the loading bay the mover moves to the selected crate. The time taken by the process and the amount of battery consumption depends on the crate distance. At the end of this movement, the distance between the crate and the mover will be zero.
-The same sequence is also repeated for crates belonging to group A and B.
+      through these fluents the first movement of the movers is described. From the loading bay the mover moves to the selected crate. The time taken by the process and the amount of battery consumption depends on the crate distance. At the end of this movement, the distance between the crate and the mover will be zero.
+      The same sequence is also repeated for crates belonging to group A and B.
 
-•	action m-load:
+*	`action m-load`:
 
-this action describes the loading movement of the crate on the mover. If the crate is light it is loaded on a single mover, if it is heavy or fragile, two movers are loaded. 
-The same action is also repeated for crates heavy, light or fragile belonging to group A and group B.
+    this action describes the loading movement of the crate on the mover. If the crate is light it is loaded on a single mover, if it is heavy or fragile, two movers are loaded. 
+    The same action is also repeated for crates heavy, light or fragile belonging to group A and group B.
 
-•	action m-move_crate_to_loading_bay
+*	`action m-move_crate_to_loading_bay
 
-  process m-moving_crate_to_loading
+* process m-moving_crate_to_loading
 
-  event crate_at_loading_bay:
+* event crate_at_loading_bay`:
 
-these fluents describe the transport of the loaded crates on the mover from the crate position to the loading bay. If the crate is fragile or heavy, two movers are considered to return to their initial position carrying the crate. The time taken by the process and the amount of battery consumption depends on the crate distance. At the end of this movement, the distance between the crate and the loading bay will be zero.
-The same sequence is also repeated for crates belonging to group A and B.
+    these fluents describe the transport of the loaded crates on the mover from the crate position to the loading bay. If the crate is fragile or heavy, two movers are considered to return to their initial position carrying the crate. The time taken by the process and the amount of battery consumption depends on the crate distance. At the end of this movement, the distance between the crate and the loading bay will be zero.
+    The same sequence is also repeated for crates belonging to group A and B.
 
-•	action m-download:
+*	`action m-download`:
 
-this action describes the downloading movement of the crate from the mover to the ground. If the crate is light, only one mover is downloaded, if it is heavy or fragile, two movers are downloaded.
+    this action describes the downloading movement of the crate from the mover to the ground. If the crate is light, only one mover is downloaded, if it is heavy or fragile, two movers are downloaded.
 
-•	action l-load
+*	`action l-load
 
-  process l-loading
+* process l-loading
 
-  event crate_on_conveyot_belt:
+* event crate_on_conveyot_belt`:
 
-these fluents describe the loading of the crates onto the conveyor belt by the loader. If the first loader is used, there is no distinction based on the type of crates, if the second, less powerful loader is used, it must be considered that it can only load light crates (weight<50kg). If the crate is fragile, the loading time will be longer for both loaders.
+    these fluents describe the loading of the crates onto the conveyor belt by the loader. If the first loader is used, there is no distinction based on the type of crates, if the second, less powerful loader is used, it must be considered that it can only load light crates (weight<50kg). If the crate is fragile, the loading time will be longer for both loaders.
 
-•	action m-charging:
+*	`action m-charging`:
 
-this action represents the loading of the mover. Whenever free movers consume a certain amount of battery power, they return to the loading bay to recharge and be able to restart.
+    this action represents the loading of the mover. Whenever free movers consume a certain amount of battery power, they return to the loading bay to recharge and be able to restart.
 
 ## Problem
 
