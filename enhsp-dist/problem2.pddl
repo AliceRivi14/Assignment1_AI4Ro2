@@ -33,7 +33,7 @@
             (fragile crate2)
             (= (loading_time l) 4)
             (= (loading_time_light ll) 4)
-            (= (loading_time_fragile l) 6)
+            (= (loading_time_F l) 6)
             (= (loading_time_light_F ll) 6)
             (free_l l)
             (free_ll ll)
