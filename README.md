@@ -183,24 +183,31 @@ In all 4 problems the 2 optimal configurations are both better than the standard
 • Problem 1:
 
     The opt-hmax configuration has a longer planning, heuristic and search time, but it expands a lower number of nodes and evaluates a lower number of states comparing to the opt-blind configuration.
+    
     The plan-length, the duration and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 1198 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
   
 • Problem 2:
 
     In this case the plan lengths are very slightly different (1 unit) because the opt-blind configuration plan starts from the charging of m1, despite both movers are charge at the beginning.
+    
     The opt-hmax configuration has a shorter planning and search time, but a longer heuristic time, and it expands a lower number of nodes and evaluates a lower number of states (1 order of magnitude) comparing to the opt-blind configuration.
+    
     The plan-length and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 194 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
   
 • Problem 3:
 
     Also in this problem the plan lengths are very slightly different (1 unit) because the opt-blind configuration plan starts from the charging of m1, despite both movers are charge at the beginning.
+    
     The opt-hmax configuration has a longer planning and search time and a longer heuristic time, but it expands a lower number of nodes (1 order of magnitude) and evaluates a lower number of states (only double) comparing to the opt-blind configuration.
+    
     The plan-length and metric (search) are almost the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 1484 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
   
 • Problem 4:
 
     The opt-hmax configuration has a longer planning, heuristic and search time (3 orders of magnitude), but it expands a lower number of nodes and evaluates a lower number of states (same order of magnitude) comparing to the opt-blind configuration.
+    
     The plan-length and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 462944 in the opt-hmax, but the number of duplicates is far lower in the former.
+    
     All these solutions can be further explored by analysing the documents in the output folder.
 
 ## Note
