@@ -69,25 +69,25 @@ In particular:
   
 In the first part, predicates and functions are defined, then each movement is presented.
   
-*	`action m-move_to_crate 
+*	`action m-move_to_crate` 
 
-* process m-moving_to_crate
+* `process m-moving_to_crate`
 
-* event m-at_crates`: 
+* `event m-at_crates`: 
 
-      through these fluents the first movement of the movers is described. From the loading bay the mover moves to the selected crate. The time taken by the process and the amount of battery consumption depends on the crate distance. At the end of this movement, the distance between the crate and the mover will be zero.
-      The same sequence is also repeated for crates belonging to group A and B.
+    through these fluents the first movement of the movers is described. From the loading bay the mover moves to the selected crate. The time taken by the process and the amount of battery consumption depends on the crate distance. At the end of this movement, the distance between the crate and the mover will be zero.
+    The same sequence is also repeated for crates belonging to group A and B.
 
 *	`action m-load`:
 
     this action describes the loading movement of the crate on the mover. If the crate is light it is loaded on a single mover, if it is heavy or fragile, two movers are loaded. 
     The same action is also repeated for crates heavy, light or fragile belonging to group A and group B.
 
-*	`action m-move_crate_to_loading_bay
+*	`action m-move_crate_to_loading_bay`
 
-* process m-moving_crate_to_loading
+* `process m-moving_crate_to_loading`
 
-* event crate_at_loading_bay`:
+* `event crate_at_loading_bay`:
 
     these fluents describe the transport of the loaded crates on the mover from the crate position to the loading bay. If the crate is fragile or heavy, two movers are considered to return to their initial position carrying the crate. The time taken by the process and the amount of battery consumption depends on the crate distance. At the end of this movement, the distance between the crate and the loading bay will be zero.
     The same sequence is also repeated for crates belonging to group A and B.
@@ -96,11 +96,11 @@ In the first part, predicates and functions are defined, then each movement is p
 
     this action describes the downloading movement of the crate from the mover to the ground. If the crate is light, only one mover is downloaded, if it is heavy or fragile, two movers are downloaded.
 
-*	`action l-load
+*	`action l-load`
 
-* process l-loading
+* `process l-loading`
 
-* event crate_on_conveyot_belt`:
+* `event crate_on_conveyot_belt`:
 
     these fluents describe the loading of the crates onto the conveyor belt by the loader. If the first loader is used, there is no distinction based on the type of crates, if the second, less powerful loader is used, it must be considered that it can only load light crates (weight<50kg). If the crate is fragile, the loading time will be longer for both loaders.
 
@@ -114,45 +114,45 @@ The code shows 4 types of problems:
 
 •	Problem 1: 3 crates
 
-  Crate 1: weight 70kg, 10 distance from loading bay
+    Crate 1: weight 70kg, 10 distance from loading bay
 
-  Crate 2: fragile, weight 20kg, 20 distance from loading bay, in group A
+    Crate 2: fragile, weight 20kg, 20 distance from loading bay, in group A
 
-  Crate 3: weight 20kg, 20 distance from loading bay, in group A
+    Crate 3: weight 20kg, 20 distance from loading bay, in group A
 
 •	Problem 2: 4 crates
 
-  Crate 1: weight 70kg, 10 distance from loading bay, in group A
+    Crate 1: weight 70kg, 10 distance from loading bay, in group A
 
-  Crate 2: fragile, weight 80kg, 20 distance from loading bay, in group A
+    Crate 2: fragile, weight 80kg, 20 distance from loading bay, in group A
 
-  Crate 3: weight 20kg, 20 distance from loading bay, in group B
+    Crate 3: weight 20kg, 20 distance from loading bay, in group B
 
-  Crate 4: weight 30kg, 10 distance from loading bay, in group B
+    Crate 4: weight 30kg, 10 distance from loading bay, in group B
 
 •	Problem 3: 4 crates
 
-  Crate 1: weight 70kg, 20 distance from loading bay, in group A
+    Crate 1: weight 70kg, 20 distance from loading bay, in group A
 
-  Crate 2: fragile, weight 80kg, 20 distance from loading bay, in group A
+    Crate 2: fragile, weight 80kg, 20 distance from loading bay, in group A
 
-  Crate 3: weight 60kg, 30 distance from loading bay, in group A
+    Crate 3: weight 60kg, 30 distance from loading bay, in group A
 
-  Crate 4: weight 30kg, 10 distance from loading bay
+    Crate 4: weight 30kg, 10 distance from loading bay
 
 •	Problem 4: 6 crates
 
-  Crate 1: weight 30kg, 20 distance from loading bay, in group A
+    Crate 1: weight 30kg, 20 distance from loading bay, in group A
 
-  Crate 2: fragile, weight 20kg, 20 distance from loading bay, in group A
+    Crate 2: fragile, weight 20kg, 20 distance from loading bay, in group A
 
-  Crate 3: fragile, weight 30kg, 10 distance from loading bay, in group B
+    Crate 3: fragile, weight 30kg, 10 distance from loading bay, in group B
 
-  Crate 4: fragile, weight 20kg, 20 distance from loading bay, in group B
+    Crate 4: fragile, weight 20kg, 20 distance from loading bay, in group B
 
-  Crate 5: fragile, weight 30kg, 30 distance from loading bay, in group B
+    Crate 5: fragile, weight 30kg, 30 distance from loading bay, in group B
 
-  Crate 6: weight 20kg, 10 distance from loading bay
+    Crate 6: weight 20kg, 10 distance from loading bay
 
 ### Explanation of the code - problem.pddl ###
 
@@ -182,26 +182,26 @@ In all 4 problems the 2 optimal configurations are both better than the standard
   
 • Problem 1:
 
-  The opt-hmax configuration has a longer planning, heuristic and search time, but it expands a lower number of nodes and evaluates a lower number of states comparing to the opt-blind configuration.
-  The plan-length, the duration and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 1198 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
+    The opt-hmax configuration has a longer planning, heuristic and search time, but it expands a lower number of nodes and evaluates a lower number of states comparing to the opt-blind configuration.
+    The plan-length, the duration and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 1198 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
   
 • Problem 2:
 
-  In this case the plan lengths are very slightly different (1 unit) because the opt-blind configuration plan starts from the charging of m1, despite both movers are charge at the beginning.
-  The opt-hmax configuration has a shorter planning and search time, but a longer heuristic time, and it expands a lower number of nodes and evaluates a lower number of states (1 order of magnitude) comparing to the opt-blind configuration.
-  The plan-length and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 194 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
+    In this case the plan lengths are very slightly different (1 unit) because the opt-blind configuration plan starts from the charging of m1, despite both movers are charge at the beginning.
+    The opt-hmax configuration has a shorter planning and search time, but a longer heuristic time, and it expands a lower number of nodes and evaluates a lower number of states (1 order of magnitude) comparing to the opt-blind configuration.
+    The plan-length and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 194 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
   
 • Problem 3:
 
-  Also in this problem the plan lengths are very slightly different (1 unit) because the opt-blind configuration plan starts from the charging of m1, despite both movers are charge at the beginning.
-  The opt-hmax configuration has a longer planning and search time and a longer heuristic time, but it expands a lower number of nodes (1 order of magnitude) and evaluates a lower number of states (only double) comparing to the opt-blind configuration.
-  The plan-length and metric (search) are almost the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 1484 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
+    Also in this problem the plan lengths are very slightly different (1 unit) because the opt-blind configuration plan starts from the charging of m1, despite both movers are charge at the beginning.
+    The opt-hmax configuration has a longer planning and search time and a longer heuristic time, but it expands a lower number of nodes (1 order of magnitude) and evaluates a lower number of states (only double) comparing to the opt-blind configuration.
+    The plan-length and metric (search) are almost the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 1484 in the opt-hmax, but the number of duplicates is far lower in the former (1 order of magnitude).
   
 • Problem 4:
 
-  The opt-hmax configuration has a longer planning, heuristic and search time (3 orders of magnitude), but it expands a lower number of nodes and evaluates a lower number of states (same order of magnitude) comparing to the opt-blind configuration.
-  The plan-length and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 462944 in the opt-hmax, but the number of duplicates is far lower in the former.
-  All these solutions can be further explored by analysing the documents in the output folder.
+    The opt-hmax configuration has a longer planning, heuristic and search time (3 orders of magnitude), but it expands a lower number of nodes and evaluates a lower number of states (same order of magnitude) comparing to the opt-blind configuration.
+    The plan-length and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 462944 in the opt-hmax, but the number of duplicates is far lower in the former.
+    All these solutions can be further explored by analysing the documents in the output folder.
 
 ## Note
   
