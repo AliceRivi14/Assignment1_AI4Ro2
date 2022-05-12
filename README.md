@@ -1,7 +1,7 @@
 # Assignment1_AI4Ro2
 
 In a warehouse, there are two robots that move crates around. The crates are to be loaded on the conveyor belt by an additional robot. The idea is that when the warehouse receives new orders, the corresponding crates to be moved are communicated to the robots, that take them to a loading bay where a dedicated robot can put them on the conveyor belt. Usually, one robot is enough to move light crates in the warehouse. However, in the presence of heavy (>50kg) crates, two robots are required.
----
+
 ## Goal
 In the warehouse, there are three robots: one loader and two movers. The loader is in charge
 of loading crates on the conveyor belt. It cannot move, as it is basically only a robotic arm.
@@ -15,8 +15,8 @@ Light crates, which weigh less than 50kg, can be moved around by a single mover 
 The time needed to move a crate around depends on its weight and can be calculated as: distance * weight / 100; moreover, when moving around with no crates, mover robots cover 10 distance units per time unit.
 It takes the loader robot 4 time units to load a crate on the conveyor belt, and it can load a single crate at a time. The loading bay must be kept free while the loader is in the process of loading a crate on the belt.
 The code is organised in four problem and a general domain, which also considers the four optional extensions.
----
-# Installing and running
+
+## Installing and running
 
 The planner ENHSP reads in input a PDDL domain and problem file and it provides with a plan. 
 In the case of planning with processes, the plan is a time-stamped plan.
@@ -31,14 +31,16 @@ java -jar /enhsp-dist/enhsp.jar -o /<domain_file> -f /<problem_file>
 where domain_file and problem_file are the PDDL input files.
 Should you wish to use a configuration other than the standard planner configuration, simply add it in the command line of the terminal as follows:
 java -jar /enhsp-dist/enhsp.jar -o /<domain_file> -f /<problem_file> -planner <configuration>
----
-# PDDL+
+
+## PDDL+
 
 PDDL+ introduced processes and events, to the domain of PDDL. PDDL+ is the first to consider essentially actions which must be applied when their preconditions are met.
 Processes directly correspond to a durative action and last for as long as their pre-condition is met. A process is something like gravity’s effect on a ball, increases the velocity of the ball until it either reaches terminal velocity or indeed, it hits the ground
 Events directly correspond to instantaneous actions, and happen the instant their preconditions are met, usually with the effect of transforming their state such that their precondition is no longer met. Events are uncontrollable, and in the ball example, you might consider an event to be the ball hitting the ground. In that instance, the velocity of the ball is negated, and multiply by some bounce coefficient.
-Processes and events are still very much a challenge for some planners, and support is somewhat patch, with certain planners losing support for earlier features in PDDL in order to support this new feature. 
-Domain
+Processes and events are still very much a challenge for some planners, and support is somewhat patch, with certain planners losing support for earlier features in PDDL in order to support this new feature.
+  
+## Domain
+  
 The code is structured in a sequence of actions, processes and events.
 Planning is about deciding which actions the user should perform by anticipating the effects of actions before they are executed.
 In particular:
@@ -76,9 +78,8 @@ these fluents describe the loading of the crates onto the conveyor belt by the l
 
 	action m-charging:
 this action represents the loading of the mover. Whenever free movers consume a certain amount of battery power, they return to the loading bay to recharge and be able to restart.
--------
 
-# Problem
+## Problem
 
 The code shows 4 types of problems:
 
@@ -118,9 +119,8 @@ There are a few optional ways in which the model can be extended:
 A robot consumes a power unit for each time unit in which it is actively doing something (moving around or moving crates).
 •	This is fragile:  some crates are “fragile”, so they always need 2 movers to be taken to the loading bay, and the loader robot works at reduced speed to avoid any potential damage. This means that loading a fragile crate on the conveyor belt takes 6 time units instead of
 the usual 4
----------
-  
-# Planning engine
+
+## Planning engine
   
 In order to check how best to optimise planning, we compared different planner configurations. In particular, we compared the standard configuration with the optimal-hrmax configuration and the optimal-blind configuration.
 The opt-hrmax configuration should be used for optimal simple numeric planning problem, and it works same as opt-max configuration, but with redundant constraints. The opt-hrmax configuration is based on A* algorithm with numeric heuristic.
@@ -145,9 +145,8 @@ Problem 4:
 The opt-hmax configuration has a longer planning, heuristic and search time (3 orders of magnitude), but it expands a lower number of nodes and evaluates a lower number of states (same order of magnitude) comparing to the opt-blind configuration.
 The plan-length and metric (search) are the same for both configurations. The number of dead ends is 0 in the opt-blind configuration and 462944 in the opt-hmax, but the number of duplicates is far lower in the former.
 All these solutions can be further explored by analysing the documents in the output folder.
------
 
-# Note
+## Note
 Each mover consumes one unit of battery power each time it performs a movement, i.e. when heading towards the crates and during the return to the loading bay by transporting the crate. The time taken by the movers in these movements depends on the distance the crate is from the loading bay. In particular, the movement back to the loading bay with the crate is a function of the weight of the crate.
 In Problem 3, the third crate is at a distance of 30 and weighs 60kg. Doing the calculations, 21 units of time and 21 units of power are consumed to transport the crate to the loading bay. Since no conditions have been placed on the minimum battery value of the mover, the planner does not have a problem if this falls under zero, so to perform the charging action it only cares that the mover is free, at the loading bay and discharges a certain amount.
 This cannot happen in reality, so the conditions under which the mover must recharge must be modified. One solution would be to add fluents that take into account that the mover's battery level cannot be less than a certain amount. That way, when the movers realise they do not have enough battery to complete a movement, they stop, discharge the crate if necessary, and head to the loading bay to recharge.
